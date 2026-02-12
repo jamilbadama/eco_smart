@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco-SMART | Multimodal Clinical Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css?v=1.1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <i class="ph-bold ph-brain"></i>
+                </div>
+                <h1>Eco-SMART</h1>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-item active">
+                    <i class="ph ph-squares-four"></i>
+                    <span>Dashboard</span>
+                </div>
+                <div class="nav-item">
+                    <i class="ph ph-users"></i>
+                    <span>Patients</span>
+                </div>
+                <div class="nav-item">
+                    <i class="ph ph-chart-line-up"></i>
+                    <span>Analytics</span>
+                </div>
+                <div class="nav-item">
+                    <i class="ph ph-gear"></i>
+                    <span>Settings</span>
+                </div>
+            </nav>
+
+            <div class="status-card">
+                <div class="status-header">
+                    <span class="status-dot"></span>
+                    <span>System Active</span>
+                </div>
+                <p>Models: Multimodal Fusion</p>
+                <p>Backend: FastAPI + DeepAgents</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="search-box">
+                    <i class="ph ph-magnifying-glass"></i>
+                    <input type="text" id="patient-id-input" placeholder="Enter Patient ID (e.g. 302_P)...">
+                    <button id="analyze-btn" class="primary-btn">Analyze</button>
+                </div>
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=Dr+Clinician&background=00d2ff&color=fff" alt="User">
+                    <span>Dr. Clinician</span>
+                </div>
+            </header>
+
+            <div class="dashboard-grid">
+                <!-- Left: Analysis Section -->
+                <div class="col-main">
+                    <!-- Real-time Monitor Card -->
+                    <div class="card glass monitor-card" id="monitor-section">
+                        <div class="card-header">
+                            <h3><i class="ph-bold ph-video-camera"></i> Live Patient Monitor</h3>
+                            <div class="monitor-controls">
+                                <span id="connection-status" class="status-indicator inactive"></span>
+                                <button id="start-monitor-btn" class="primary-btn sm">Start Live Session</button>
+                                <button id="stop-monitor-btn" class="secondary-btn sm hidden">Stop Session</button>
+                            </div>
+                        </div>
+                        <div class="monitor-viewport">
+                            <video id="webcam-preview" autoplay playsinline muted></video>
+                            <div id="emotion-badge" class="emotion-badge hidden">
+                                <i class="ph-bold ph-smiley"></i> <span id="emotion-label">Neutral</span>
+                            </div>
+                            <div id="monitor-overlay" class="monitor-overlay hidden">
+                                <div class="pulse-ring"></div>
+                                <span>Analyzing Live Feed...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gauge and Metrics -->
+                    <div class="metrics-row">
+                        <div class="card metric-card glass">
+                            <h3>Depression Risk</h3>
+                            <div class="gauge-container">
+                                <canvas id="risk-gauge"></canvas>
+                                <div class="gauge-value" id="risk-value">--</div>
+                            </div>
+                            <p class="metric-label" id="risk-label">Awaiting Data</p>
+                        </div>
+
+                        <div class="card metric-card glass">
+                            <h3>PHQ-8 Score</h3>
+                            <div class="score-display">
+                                <span id="phq-score">--</span>
+                                <small>/ 24</small>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="phq-progress" style="width: 0%"></div>
+                            </div>
+                            <p class="metric-label" id="phq-label">Clinical Significance: Unknown</p>
+                        </div>
+
+                        <div class="card metric-card glass" id="emotion-metric-card">
+                            <h3>Detected Emotion</h3>
+                            <div class="emotion-display">
+                                <i id="emotion-icon" class="ph-fill ph-smiley"></i>
+                                <span id="dash-emotion-label">--</span>
+                            </div>
+                            <div class="confidence-bar">
+                                <div class="confidence-fill" id="emotion-confidence-fill" style="width: 0%"></div>
+                            </div>
+                            <p class="metric-label" id="emotion-confidence-label">Confidence: --%</p>
+                        </div>
+                    </div>
+
+                    <!-- Clinical Markers Charts -->
+                    <div class="card glass marker-card">
+                        <div class="card-header">
+                            <h3>Behavioral Biomarkers</h3>
+                            <div class="tabs">
+                                <span class="tab active">Movement</span>
+                                <span class="tab">Speech</span>
+                                <span class="tab">Energy</span>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="markers-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Chat/Assistant Section -->
+                <div class="col-sidebar">
+                    <div class="card glass chat-card">
+                        <div class="card-header">
+                            <h3>Clinical Assistant</h3>
+                        </div>
+                        <div class="chat-messages" id="chat-messages">
+                            <div class="message system">
+                                <p>Hello Dr. Clinician. I am ready to assist with patient multimodal analysis. Please
+                                    provide a patient ID or ask a diagnostic question.</p>
+                            </div>
+                        </div>
+                        <div class="chat-input-area">
+                            <textarea id="ai-query" placeholder="Ask about guidelines or analysis..."></textarea>
+                            <button id="send-query-btn"><i class="ph-bold ph-paper-plane-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Findings Modal -->
+    <div id="findings-modal" class="modal-overlay hidden">
+        <div class="modal-content glass findings-card">
+            <div class="modal-header">
+                <h2><i class="ph-bold ph-clipboard-text"></i> Session Clinical Findings</h2>
+                <button id="close-findings-btn" class="close-btn"><i class="ph ph-x"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="findings-grid">
+                    <div class="findings-main">
+                        <div class="risk-summary-box">
+                            <span class="label">Primary Assessment</span>
+                            <div class="risk-highlight">
+                                <h3 id="findings-risk-level">--</h3>
+                                <span id="findings-risk-prob">--%</span>
+                            </div>
+                            <p id="findings-risk-summary">--</p>
+                        </div>
+
+                        <div class="patterns-box">
+                            <span class="label">SOTA Patterns Detected (MMFformer)</span>
+                            <ul id="findings-patterns-list">
+                                <!-- Patterns will be injected here -->
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="findings-details">
+                        <div class="detail-item">
+                            <span class="label">Dominant Affect</span>
+                            <div class="affect-value">
+                                <i id="findings-emotion-icon" class="ph-fill ph-smiley"></i>
+                                <span id="findings-emotion-label">--</span>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <span class="label">Convergence Points</span>
+                            <ul id="findings-agreement-list">
+                                <!-- Agreement points will be injected here -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="findings-phq-btn" class="secondary-btn">Assess Patient PHQ-8</button>
+                <button id="findings-ok-btn" class="primary-btn">Acknowledge & Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PHQ-8 Questionnaire Modal -->
+    <div id="phq-modal" class="modal-overlay hidden">
+        <div class="modal-content glass phq-card">
+            <div class="modal-header">
+                <h2><i class="ph-bold ph-list-numbers"></i> PHQ-8 Clinical Questionnaire</h2>
+                <button id="close-phq-btn" class="close-btn"><i class="ph ph-x"></i></button>
+            </div>
+            <div class="modal-body">
+                <p class="intro-text">Over the last 2 weeks, how often has the patient been bothered by any of the
+                    following problems?</p>
+                <div id="phq-questions-container" class="phq-questions">
+                    <!-- Questions will be injected here via JS -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="phq-total-score">
+                    Total Score: <span id="phq-total-display">0</span>
+                </div>
+                <button id="submit-phq-btn" class="primary-btn">Submit Ground Truth</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="loader" class="loader-overlay hidden">
+        <div class="spinner"></div>
+        <p>Analyzing Multimodal Features...</p>
+    </div>
+
+    <script src="/static/script.js?v=1.1"></script>
+</body>
+
+</html>

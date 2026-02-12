@@ -1,0 +1,293 @@
+{
+    "sessions": {
+        "302_P": {
+            "timestamp": "2026-02-12T14:37:37.867806",
+            "data": {
+                "session_id": "302_P",
+                "timestamp": "2026-02-12T14:37:37.867799",
+                "analysis": {
+                    "markers": {
+                        "text": {
+                            "sentiment": 0.5,
+                            "word_count": 0
+                        },
+                        "audio": {
+                            "pitch_mean": 0.0,
+                            "pitch_std": 0.0,
+                            "activity_mean": 0.0
+                        },
+                        "video": {
+                            "movement_mean": 0.0,
+                            "movement_std": 0.0
+                        }
+                    },
+                    "evidence": {
+                        "primary_signals": {
+                            "binary_prob": 0.72,
+                            "score": 12.5
+                        },
+                        "behavioral_markers": {
+                            "text": {
+                                "sentiment": 0.5,
+                                "word_count": 0
+                            },
+                            "audio": {
+                                "pitch_mean": 0.0,
+                                "pitch_std": 0.0,
+                                "activity_mean": 0.0
+                            },
+                            "video": {
+                                "movement_mean": 0.0,
+                                "movement_std": 0.0
+                            }
+                        },
+                        "clinical_grounding": {
+                            "phq8": 11
+                        },
+                        "provenance": {
+                            "models": [
+                                "FusionModel_V1"
+                            ],
+                            "markers": [
+                                "MarkerDetector_V1"
+                            ]
+                        },
+                        "convergence_summary": "Evidence indicates consistent patterns of risk.",
+                        "agreement_points": [
+                            "AI Model indicates risk",
+                            "Self-report (PHQ-8) indicates clinical significance"
+                        ]
+                    },
+                    "interpretation": {
+                        "risk_level": "Moderate",
+                        "clinical_priority": "Medium",
+                        "confidence": 0.72,
+                        "uncertainty_label": "Moderate",
+                        "explanations": [
+                            "Signs of psychomotor retardation (reduced movement)",
+                            "Monotone speech patterns detected"
+                        ],
+                        "summary": "Assessment suggests Moderate risk with Moderate uncertainty."
+                    }
+                },
+                "trends": {
+                    "status": "baseline",
+                    "message": "Baseline session established."
+                }
+            }
+        },
+        "300_P": {
+            "timestamp": "2026-02-12T16:31:11.293236",
+            "data": {
+                "session_id": "300_P",
+                "timestamp": "2026-02-12T16:31:11.293226",
+                "analysis": {
+                    "markers": {
+                        "text": {
+                            "sentiment": 0.5,
+                            "word_count": 0
+                        },
+                        "audio": {
+                            "pitch_mean": 0.0,
+                            "pitch_std": 0.0,
+                            "activity_mean": 0.0
+                        },
+                        "video": {
+                            "movement_mean": 0.0,
+                            "movement_std": 0.0
+                        }
+                    },
+                    "evidence": {
+                        "primary_signals": {
+                            "binary_prob": 0.72,
+                            "score": 12.5
+                        },
+                        "behavioral_markers": {
+                            "text": {
+                                "sentiment": 0.5,
+                                "word_count": 0
+                            },
+                            "audio": {
+                                "pitch_mean": 0.0,
+                                "pitch_std": 0.0,
+                                "activity_mean": 0.0
+                            },
+                            "video": {
+                                "movement_mean": 0.0,
+                                "movement_std": 0.0
+                            }
+                        },
+                        "clinical_grounding": {
+                            "phq8": 11
+                        },
+                        "fusion_assessment": {
+                            "fusion_risk_score": 0.71,
+                            "detected_patterns": [
+                                "Acoustic affective/prosodic risk",
+                                "Psychomotor retardation markers detected"
+                            ],
+                            "confidence": 0.85
+                        },
+                        "provenance": {
+                            "models": [
+                                "MMFformer_V1",
+                                "FusionModel_V1"
+                            ],
+                            "markers": [
+                                "MarkerDetector_V1"
+                            ]
+                        },
+                        "convergence_summary": "Extremely strong convergence: All modalities and high-level fusion confirm significant clinical risk.",
+                        "agreement_points": [
+                            "Static AI Fusion Model indicates risk",
+                            "Self-report (PHQ-8) indicates clinical significance",
+                            "MMFformer fusion identifies high-level risk patterns: Acoustic affective/prosodic risk, Psychomotor retardation markers detected",
+                            "Acoustic markers indicate potential psychomotor retardation (monotone speech)"
+                        ]
+                    },
+                    "interpretation": {
+                        "risk_level": "Moderate",
+                        "clinical_priority": "Medium",
+                        "confidence": 0.72,
+                        "uncertainty_label": "Moderate",
+                        "explanations": [
+                            "Signs of psychomotor retardation (reduced movement)",
+                            "Monotone speech patterns detected"
+                        ],
+                        "summary": "Assessment suggests Moderate risk with Moderate uncertainty."
+                    }
+                },
+                "trends": {
+                    "status": "baseline",
+                    "message": "Baseline session established."
+                }
+            }
+        },
+        "TEST_LIVE_SESSION": {
+            "timestamp": "2026-02-12T15:30:06.758987",
+            "data": {
+                "session_id": "TEST_LIVE_SESSION",
+                "timestamp": "2026-02-12T15:30:06.758976",
+                "analysis": {
+                    "markers": {
+                        "text": {
+                            "sentiment": 0.5,
+                            "word_count": 0
+                        },
+                        "audio": {
+                            "energy_mean": 0.1
+                        },
+                        "video": {
+                            "movement_mean": 0.014337832152150985
+                        },
+                        "dominant_emotion": "angry"
+                    },
+                    "evidence": {
+                        "primary_signals": {
+                            "binary_prob": 0.8,
+                            "score": 19.200000000000003
+                        },
+                        "behavioral_markers": {
+                            "audio": {
+                                "energy_mean": 0.1
+                            },
+                            "video": {
+                                "movement_mean": 0.014337832152150985
+                            }
+                        },
+                        "clinical_grounding": {},
+                        "provenance": {
+                            "models": [
+                                "RealtimeFusion_V1"
+                            ],
+                            "markers": [
+                                "RealtimeMarkerDetector_V1"
+                            ]
+                        }
+                    },
+                    "interpretation": {
+                        "risk_level": "Moderately Severe / Severe",
+                        "clinical_priority": "High",
+                        "confidence": 0.8,
+                        "uncertainty_label": "Low",
+                        "explanations": [
+                            "Signs of psychomotor retardation (reduced movement)"
+                        ],
+                        "summary": "Assessment suggests Moderately Severe / Severe risk with Low uncertainty."
+                    }
+                },
+                "trends": {
+                    "status": "live_capture",
+                    "message": "Real-time session captured with dominant emotion: angry"
+                }
+            }
+        },
+        "LIVE_SESSION": {
+            "timestamp": "2026-02-12T17:25:01.867624",
+            "data": {
+                "session_id": "LIVE_SESSION",
+                "timestamp": "2026-02-12T17:24:53.150726",
+                "analysis": {
+                    "markers": {
+                        "text": {
+                            "sentiment": 0.5,
+                            "word_count": 0
+                        },
+                        "audio": {
+                            "energy_mean": 0.0036211844633600634
+                        },
+                        "video": {
+                            "movement_mean": 0.4741281539194948
+                        },
+                        "dominant_emotion": "fear"
+                    },
+                    "evidence": {
+                        "primary_signals": {
+                            "binary_prob": 0.51,
+                            "score": 12.24
+                        },
+                        "behavioral_markers": {
+                            "audio": {
+                                "energy_mean": 0.0036211844633600634
+                            },
+                            "video": {
+                                "movement_mean": 0.4741281539194948
+                            }
+                        },
+                        "clinical_grounding": {
+                            "phq8": 13
+                        },
+                        "fusion_assessment": {
+                            "fusion_risk_score": 0.2,
+                            "detected_patterns": [],
+                            "confidence": 0.85
+                        },
+                        "provenance": {
+                            "models": [
+                                "MMFformer_V1",
+                                "RealtimeFusion_V1"
+                            ],
+                            "markers": [
+                                "RealtimeMarkerDetector_V1"
+                            ]
+                        }
+                    },
+                    "interpretation": {
+                        "risk_level": "Moderate",
+                        "clinical_priority": "Medium",
+                        "confidence": 0.51,
+                        "uncertainty_label": "High",
+                        "explanations": [
+                            "No strong behavioral markers detected."
+                        ],
+                        "summary": "Assessment suggests Moderate risk with High uncertainty."
+                    }
+                },
+                "trends": {
+                    "status": "live_capture",
+                    "message": "Real-time session captured with dominant emotion: fear"
+                }
+            }
+        }
+    }
+}
