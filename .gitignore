@@ -5,6 +5,6 @@
 /test_split_Depression_AVEC2017.csv
 /train_split_Depression_AVEC2017.csv
 /daic_woz_data
-/experiments
+experiments
 /logs
 .vscode
