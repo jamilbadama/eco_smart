@@ -1,7 +1,6 @@
 # Eco-SMART: Service-Oriented Platform for Mental Health Assessment
 
-Eco-SMART is an advanced AI platform designed to assist clinicians in screening for depression using multimodal data (Audio, Video, and Text). It aligns with the architecture proposed in the MDPI-iSMART paper, featuring a service-oriented, layered design for robust and explainable clinical decision support.
-
+Eco-SMART is an advanced AI platform designed to assist clinicians in screening for depression using multimodal data (Audio, Video, and Text). 
 ---
 
 ## 🚀 Key Features
